@@ -1,0 +1,76 @@
+{
+  "randevular": [
+    {
+      "id": "1",
+      "date": "29.09.2022",
+      "hastaId": "1"
+    }
+  ],
+  "hastalar": [
+    {
+      "id": "1",
+      "name": "deneme",
+      "surname": "deneme",
+      "phone": "5554443322",
+      "islemIds": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "deneme2",
+      "surname": "deneme2",
+      "phone": "5554443344",
+      "islemIds": [
+        "1"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "deneme2",
+      "surname": "deneme2",
+      "phone": "5554443344",
+      "islemIds": [
+        "1"
+      ]
+    },
+    {
+      "id": "1665667707202",
+      "name": "hasta1",
+      "surname": "hasta1",
+      "phone": "05423670855",
+      "islemIds": [
+        "1665667707091"
+      ]
+    }
+  ],
+  "islemler": [
+    {
+      "id": "1",
+      "sikayet": "grip",
+      "uygulananTedavi": "2 gün istirahat tavsiye edildi",
+      "yazilanIlaçlar": [
+        "parol",
+        "katarin",
+        "agumentine"
+      ]
+    },
+    {
+      "id": "2",
+      "sikayet": "bel ağrısı",
+      "uygulananTedavi": "ayakta tedavi",
+      "yazilanIlaçlar": [
+        "parol",
+        "voltaren"
+      ]
+    },
+    {
+      "id": "1665667707091",
+      "sikayet": "grip",
+      "uygulananTedavi": "",
+      "yazilanIlaclar": []
+    }
+  ]
+}

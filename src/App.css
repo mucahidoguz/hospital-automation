@@ -1,0 +1,28 @@
+
+
+
+.Navbar{
+border-radius: 5px;
+}
+
+h1 {
+text-align: center;
+font-family: sans-serif;
+}
+
+.NavbarCategory{
+text-decoration: none;
+font-family:sans-serif;
+color: rgb(199, 198, 198);
+font-size: large;
+transition: all 0.2s linear;
+}
+
+.NavbarCategory:hover {
+color: white;    
+}
+
+.FooterBar{
+display: flex;
+margin-top: 600px;
+}
