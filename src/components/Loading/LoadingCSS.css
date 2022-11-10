@@ -1,0 +1,31 @@
+.Loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 280px;
+    margin-bottom: 300px;
+    flex-direction: column;
+  }
+  
+  .Loading {
+    width: 50px;
+    height: 50px;
+  }
+  
+  #Loading {
+    padding-left: 15px;
+    animation: hello 0.9s ease-in-out infinite;
+    color:green;
+}
+@keyframes hello {
+    0% {
+      font-weight: 100;
+    }
+    50% {
+      font-weight: 900;
+    }
+    100% {
+      font-weight: 100;
+    }
+  }
+

@@ -1,0 +1,40 @@
+{
+  "randevular": [],
+  "hastalar": [
+    {
+      "id": "2",
+      "name": "deneme2",
+      "surname": "deneme2",
+      "phone": "5554443344",
+      "islemIds": [
+        "1"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "deneme2",
+      "surname": "deneme2",
+      "phone": "5554443355",
+      "islemIds": [
+        "1"
+      ]
+    },
+    {
+      "id": "1665667707202",
+      "name": "hasta1",
+      "surname": "hasta1",
+      "phone": "05423670855",
+      "islemIds": [
+        "1665667707091"
+      ]
+    }
+  ],
+  "islemler": [
+    {
+      "id": "1665667707091",
+      "sikayet": "grip",
+      "uygulananTedavi": "",
+      "yazilanIlaclar": []
+    }
+  ]
+}
