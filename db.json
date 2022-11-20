@@ -1,38 +1,33 @@
 {
-  "randevular": [],
+  "randevular": [
+    {
+      "id": "1668878351036",
+      "date": "2022-11-22T10:20",
+      "hastaId": "1668878272841"
+    }
+  ],
   "hastalar": [
     {
-      "id": "2",
-      "name": "deneme2",
-      "surname": "deneme2",
-      "phone": "5554443344",
+      "id": "1668878272841",
+      "name": "senaryo1",
+      "surname": "senaryo1",
+      "phone": "05556667788",
       "islemIds": [
-        "1"
-      ]
-    },
-    {
-      "id": "3",
-      "name": "deneme2",
-      "surname": "deneme2",
-      "phone": "5554443355",
-      "islemIds": [
-        "1"
-      ]
-    },
-    {
-      "id": "1665667707202",
-      "name": "hasta1",
-      "surname": "hasta1",
-      "phone": "05423670855",
-      "islemIds": [
-        "1665667707091"
+        "1668878272497",
+        "1668878351037"
       ]
     }
   ],
   "islemler": [
     {
-      "id": "1665667707091",
-      "sikayet": "grip",
+      "id": "1668878272497",
+      "sikayet": "uyuz",
+      "uygulananTedavi": "",
+      "yazilanIlaclar": []
+    },
+    {
+      "id": "1668878351037",
+      "sikayet": "uyuz",
       "uygulananTedavi": "",
       "yazilanIlaclar": []
     }

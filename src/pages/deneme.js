@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import Loading from "../components/Loading/Loading";
-
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { Newspaper } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+
+import Header from "../components/Header";
+
+import axios from "axios";
 
 const RandevuEkle = (props) => {
+  const navigate = useNavigate();
   const [date, setDate] = useState("");
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
@@ -19,21 +17,19 @@ const RandevuEkle = (props) => {
   const [hastalar, setHastalar] = useState(null);
   const [hasHasta, setHasHasta] = useState(false);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     axios
-      .get("http://localhost:3005/hastalar")
+      .get("http://localhost:3004/hastalar")
       .then((res) => {
         setHastalar(res.data);
       })
-      .catch((err) => console.log("RandevuEkleGetHastalarErr", err));
+      .catch((err) => console.log(err));
   }, []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event) =>
+   {
     event.preventDefault();
     console.log(date);
-
     if (
       date === "" ||
       phone === "" ||
@@ -41,15 +37,13 @@ const RandevuEkle = (props) => {
       surname === "" ||
       sikayet === ""
     ) {
-      alert("Tüm Alanları Girmek Zorunludur !");
+      alert("Bütün alanları girmek zorunludur");
       return;
     }
-
     if (phone.length !== 11) {
-      alert("Telefon Numarası 11 Hane Olarak Girilmelidir !");
+      alert("Telefon numarası 11 hane olmak zorundadır");
       return;
     }
-
     if (hasHasta) {
       const newRandevu = {
         id: String(new Date().getTime()),
@@ -62,30 +56,28 @@ const RandevuEkle = (props) => {
         uygulananTedavi: "",
         yazilanIlaclar: [],
       };
-
       const updatedHasta = {
         ...hasHasta,
         islemIds: [...hasHasta.islemIds, newIslem.id],
       };
       axios
-        .post("http://localhost:3005/randevular", newRandevu)
+        .post("http://localhost:3004/randevular", newRandevu)
         .then((res) => {
-          console.log("saveRandevu", res);
+          console.log("randevu kayıt", res);
         })
-        .catch((err) => console.log("saveRandevu", err));
-
+        .catch((err) => console.log(err));
       axios
-        .post("http://localhost:3005/islemler", newIslem)
+        .post("http://localhost:3004/islemler", newIslem)
         .then((res) => {
-          console.log("saveIslem", res);
+          console.log("işlem kayıt", res);
         })
-        .catch((err) => console.log("saveIslem", err));
+        .catch((err) => console.log(err));
       axios
-        .put(`http://localhost:3005/hastalar/${hasHasta.id}`, updatedHasta)
+        .put(`http://localhost:3004/hastalar/${hasHasta.id}`, updatedHasta)
         .then((res) => {
-          console.log("UpdatedHastaSaveIslem", res);
+          console.log("hasta update", res);
         })
-        .catch((err) => console.log("UpdatedHastaSaveIslem", err));
+        .catch((err) => console.log(err));
       navigate("/");
     } else {
       const newIslem = {
@@ -99,6 +91,7 @@ const RandevuEkle = (props) => {
         name: name,
         surname: surname,
         islemIds: [newIslem.id],
+        phone:phone
       };
       const newRandevu = {
         id: String(new Date().getTime() + 2),
@@ -106,24 +99,24 @@ const RandevuEkle = (props) => {
         hastaId: newHasta.id,
       };
       axios
-        .post("http://localhost:3005/randevular", newRandevu)
+        .post("http://localhost:3004/randevular", newRandevu)
         .then((res) => {
-          console.log("saveRandevu", res);
+          console.log("randevu kayıt", res);
         })
-        .catch((err) => console.log("saveRandevu", err));
+        .catch((err) => console.log(err));
+      axios
+        .post("http://localhost:3004/islemler", newIslem)
+        .then((res) => {
+          console.log("işlem kayıt", res);
+        })
+        .catch((err) => console.log(err));
 
       axios
-        .post("http://localhost:3005/islemler", newIslem)
+        .post("http://localhost:3004/hastalar", newHasta)
         .then((res) => {
-          console.log("saveIslem", res);
+          console.log("hasta kayıt", res);
         })
-        .catch((err) => console.log("saveIslem", err));
-      axios
-        .post("http://localhost:3005/hastalar", newHasta)
-        .then((res) => {
-          console.log("hastaSave", res);
-        })
-        .catch((err) => console.log("hastaSave", err));
+        .catch((err) => console.log(err));
       navigate("/");
     }
   };
@@ -133,7 +126,6 @@ const RandevuEkle = (props) => {
     const arananHasta = hastalar.find(
       (item) => item.phone === String(event.target.value)
     );
-
     if (arananHasta !== undefined) {
       setName(arananHasta.name);
       setSurname(arananHasta.surname);
@@ -146,9 +138,8 @@ const RandevuEkle = (props) => {
   };
 
   if (hastalar === null) {
-    return <Loading />;
+    return <h1>Loading...</h1>;
   }
-
   return (
     <div>
       <Header />
@@ -158,22 +149,20 @@ const RandevuEkle = (props) => {
             display: "flex",
             justifyContent: "center",
             margin: "20px 0px",
-          }}
-        >
+          }}>
           <input
             value={date}
+            defaultValue={new Date("dd/mm/yyyy hh:mm")}
             onChange={(event) => setDate(event.target.value)}
             type={"datetime-local"}
           />
         </div>
-
         <div
           style={{
             display: "flex",
             justifyContent: "center",
             margin: "20px 0px",
-          }}
-        >
+          }}>
           <TextField
             type={"number"}
             style={{ width: "50%" }}
@@ -189,8 +178,7 @@ const RandevuEkle = (props) => {
             display: "flex",
             justifyContent: "center",
             margin: "20px 0px",
-          }}
-        >
+          }}>
           <TextField
             type={"text"}
             style={{ width: "50%" }}
@@ -207,8 +195,7 @@ const RandevuEkle = (props) => {
             display: "flex",
             justifyContent: "center",
             margin: "20px 0px",
-          }}
-        >
+          }}>
           <TextField
             type={"text"}
             style={{ width: "50%" }}
@@ -225,8 +212,7 @@ const RandevuEkle = (props) => {
             display: "flex",
             justifyContent: "center",
             margin: "20px 0px",
-          }}
-        >
+          }}>
           <TextField
             type={"text"}
             style={{ width: "50%" }}
@@ -242,14 +228,12 @@ const RandevuEkle = (props) => {
             display: "flex",
             justifyContent: "center",
             margin: "20px 0px",
-          }}
-        >
+          }}>
           <Button type="submit" variant="contained">
             Kaydet
           </Button>
         </div>
       </form>
-      <Footer />
     </div>
   );
 };

@@ -51,7 +51,8 @@ const Hastalar = (props) => {
         hasta.islemIds.map((islemId) => {
           axios
             .delete(`http://localhost:3005/islemler/${islemId}`)
-            .then((islemDeleteRes) => {})
+            .then((islemDeleteRes) => {            
+            })
             .catch((err) => console.log("Hastalar hastaIslemDelete", err));
         });
         filteredRandevular.map((item) => {
